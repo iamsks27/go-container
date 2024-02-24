@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -42,5 +43,23 @@ func deal(d deck, handSize int) (deck, deck) {
 
 func (d deck) toString() string {
 
-	return strings.Join(d, ", ")
+	return strings.Join(d, "\n")
+}
+
+func (d deck) saveToFile(filename string) error {
+
+	return os.WriteFile(filename, []byte(d.toString()), 0644)
+}
+
+func newDeckFromFile(filename string) deck {
+	content, err := os.ReadFile(filename)
+
+	if err != nil {
+		fmt.Println("There was an error reading the file: ", err)
+		panic(err)
+	}
+
+	deck := strings.Split(string(content), "\n")
+	return deck
+
 }
