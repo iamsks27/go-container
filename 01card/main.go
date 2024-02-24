@@ -4,12 +4,13 @@ import "fmt"
 
 func main() {
 	cards := newDeck()
+	fmt.Println(cards.toString())
 
 	// cards.print()
 
-	hand, remainingDeck := deal(cards, 5)
+	// hand, remainingDeck := deal(cards, 5)
 
-	hand.print()
-	fmt.Println("-----------------")
-	remainingDeck.print()
+	// hand.print()
+	// fmt.Println("-----------------")
+	// remainingDeck.print()
 }
